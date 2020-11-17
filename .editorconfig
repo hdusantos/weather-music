@@ -1,0 +1,18 @@
+root = true
+
+[*]
+end_of_line = lf
+insert_final_newline = true
+
+[*.{js,ts}]
+trim_trailing_whitespace = true
+charset = utf-8
+
+[*.ts]
+indent_style = space
+
+[{package.json,.docker-compose.yml}]
+indent_style = space
+
+[{tsconfig.json}]
+indent_style = space
