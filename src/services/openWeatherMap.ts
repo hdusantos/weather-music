@@ -17,7 +17,7 @@ class OpenWeatherMap {
             const weatherDataRequest = await axios.get(`${this.baseUrl}?q=${this.city}&units=metric&appid=${this.token}`);
             return parseFloat(`${weatherDataRequest.data.main.temp}`);
         } catch (error) {
-            throw new Error('Request Error');
+            throw new Error(error);
         }
     }
 }

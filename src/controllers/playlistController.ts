@@ -1,4 +1,5 @@
 import OpenWeatherMap from '../services/openWeatherMap';
+import Spotify from '../services/spotify';
 
 class PlaylistController {
     private city;
@@ -15,7 +16,11 @@ class PlaylistController {
 
     private async getTemperature() {
         const openWeatherMap = new OpenWeatherMap(this.city);
-        const temperatureCelsius: number = await openWeatherMap.getTemperatureCelsius();
+        const temperatureCelsius = await openWeatherMap.getTemperatureCelsius()
+            .catch((err) => { console.log(err); });
+        const spotify = new Spotify();
+        await spotify.auth()
+            .catch((err) => { console.log(err); });
 
         return temperatureCelsius;
     }

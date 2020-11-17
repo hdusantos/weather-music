@@ -5,7 +5,9 @@ const routerPlaylist = Router();
 
 routerPlaylist.get('/', async (req, res) => {
     // Validate params
-    if (req.query.city === undefined) { res.send('error'); }
+    if (req.query.city === undefined) {
+        return res.status(400).send('Parameter city not found');
+    }
 
     const city: string = `${req.query.city}`;
 
