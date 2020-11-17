@@ -10,6 +10,6 @@ app.use(cors());
 app.use(bodyParse.json());
 app.use(logger('dev'));
 
-app.use('/', routerPlaylist);
+app.use('/playlist', routerPlaylist);
 
 export default app;
