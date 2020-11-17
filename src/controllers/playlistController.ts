@@ -7,10 +7,17 @@ class PlaylistController {
         this.city = cityName;
     }
 
-    public async getPlaylist() {
-        const openWeatherMap = new OpenWeatherMap(this.city);
-        const temperature = await openWeatherMap.getTemperature();
+    public getPlaylist() {
+        const temperature = this.getTemperature();
+
         return temperature;
+    }
+
+    private async getTemperature() {
+        const openWeatherMap = new OpenWeatherMap(this.city);
+        const temperatureCelsius: number = await openWeatherMap.getTemperatureCelsius();
+
+        return temperatureCelsius;
     }
 }
 
