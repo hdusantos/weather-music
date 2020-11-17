@@ -1,4 +1,4 @@
-import Person from '../index';
+import Person from '../src/index';
 
 test('Person must have a name', () => {
     const person1 = new Person('Jeff');
