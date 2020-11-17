@@ -15,8 +15,19 @@
     "plugins": [
         "@typescript-eslint"
     ],
+    "settings": {
+        "import/resolver": {
+            "node": {
+                "extensions": [
+                    ".ts",
+                    ".js"
+                ]
+            }
+        }
+    },
     "rules": {
         "no-console": "off",
-        "indent": "off"
+        "indent": "off",
+        "import/extensions": "off"
     }
 }
