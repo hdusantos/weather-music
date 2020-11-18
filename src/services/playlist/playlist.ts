@@ -1,7 +1,7 @@
 import OpenWeatherMap from '../openWeatherMap/openWeatherMap';
 import Spotify from '../spotify/spotify';
 
-class PlaylistController {
+class Playlist {
     private city;
 
     constructor(cityName: string) {
@@ -40,4 +40,4 @@ class PlaylistController {
     }
 }
 
-export default PlaylistController;
+export default Playlist;
