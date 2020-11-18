@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { spotify } from '../config/environment';
+import { spotify } from '../../config/environment';
 
 class Spotify {
     private token: string;

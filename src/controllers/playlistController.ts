@@ -1,5 +1,5 @@
-import OpenWeatherMap from '../services/openWeatherMap';
-import Spotify from '../services/spotify';
+import OpenWeatherMap from '../services/openWeatherMap/openWeatherMap';
+import Spotify from '../services/spotify/spotify';
 
 class PlaylistController {
     private city;

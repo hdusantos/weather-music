@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { openWeatherMap } from '../config/environment';
+import { openWeatherMap } from '../../config/environment';
 
 class OpenWeatherMap {
     private baseUrl = openWeatherMap.baseUrl;
