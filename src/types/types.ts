@@ -1,7 +1,7 @@
 interface Location {
     city?: string,
-    lat?: number,
-    lon?: number,
+    lat?: string,
+    lon?: string,
 }
 
 export {

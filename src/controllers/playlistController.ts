@@ -4,12 +4,12 @@ import { Location } from '../types/types';
 
 const playlistController = async (req: Request, res: Response) => {
     // Validate params
-    if (req.query.city === undefined) {
-        return res.status(400).send('Parameter city not found');
+    if (req.query.city === undefined && (req.query.lat && req.query.lon) === undefined) {
+        return res.status(404).send('Parameter not found');
     }
 
-    const params: Location = { city: `${req.query.city}` };
-
+    const params: Location = <Location>req.query;
+    console.log(params);
     const playlistService = new Playlist(params);
     const tracks = await playlistService.getTracks();
 
