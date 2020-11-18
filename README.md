@@ -10,6 +10,7 @@ API de sugestão de músicas de uma playlist do spotify _(baseado no clima de um
   1. [Visão geral da API](#visão-geral-da-api)
       1. [Como Usar](#como-usar)
       1. [Rotas](#rotas)
+      1. [Mensagem de Erro](#mensagem-de-erro)
   1. [Executando os testes](#executando-os-testes)
   1. [Construído com](#construído-com)
   1. [Versionamento](#versionamento)
@@ -71,9 +72,30 @@ A API retorna as informações no formato JSON
 
 #### Rotas:
 
-_Listar tracks de uma playlist:_
+_Listar tracks de uma playlist usando o **nome** da cidade:_
 ```http
 GET /playlist?city=brasilia HTTP/1.1
+```
+
+_Listar tracks de uma playlist usando a **latitude e longitude** da cidade:_
+```http
+GET /playlist?lat=55.751244&lon=37.618423 HTTP/1.1
+```
+
+#### Mensagem de Erro:
+
+Os error são retornados no seguinte formato:
+
+```http
+GET /playlist?city=brasiliaaaa HTTP/1.1
+```
+```json
+{
+  "error": {
+    "statusCode": "404",
+    "message": "city not found"
+  }
+}
 ```
 O parâmetro _city_ corresponde a cidade na qual será usada a temperatura para a escolha da playlist
 
@@ -110,7 +132,7 @@ yarn test
 
 Nós usamos [SemVer](http://semver.org/) para versionamento. Para mais versões Disponíveis, veja [Versões](https://github.com/hdusantos/weather-music/tags). 
 
-## Autores
+## Autor
 
 * [Hudson dos Santos](https://github.com/hdusantos)
 
