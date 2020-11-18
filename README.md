@@ -34,7 +34,7 @@ Construa a imagem
 docker build -t weather-music .
 ```
 
-Alguns parâmetro são experados pela aplicação, são eles o **token** do openWeatherMap API, **clientId e clientSecret** do Spotify API, basta passar os valores como variáveis de ambiente para o container.
+Alguns parâmetro são esperado pela aplicação, são eles o **token** do openWeatherMap API, **clientId e clientSecret** do Spotify API, basta passar os valores como variáveis de ambiente para o container.
 
 ```sh
 docker run --name weather-music -p 3001:3001 -e "OPEN_WEATHER_MAP_API_TOKEN=TOKEN_AQUI" -e "SPOTIFY_API_CLIENT_ID=CLIENT_ID_AQUI" -e "SPOTIFY_API_CLIENT_SECRET=CLIENT_SECRET_AQUI" -d weather-music
@@ -60,7 +60,7 @@ Instale as dependências
 yarn install
 ```
 
-Alguns parâmetro são experados pela aplicação, são eles o **token do openWeatherMap API**, **clientId e clientSecret do Spotify API**, basta configurar algumas variáveis de ambiente.
+Alguns parâmetro são esperado pela aplicação, são eles o **token** do openWeatherMap API, **clientId e clientSecret** do Spotify API, basta configurar algumas variáveis de ambiente.
 
 ```sh
 export OPEN_WEATHER_MAP_API_TOKEN=TOKEN_AQUI
