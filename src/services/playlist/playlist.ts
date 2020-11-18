@@ -1,11 +1,12 @@
 import OpenWeatherMap from '../openWeatherMap/openWeatherMap';
 import Spotify from '../spotify/spotify';
+import { Location } from '../../types/types';
 
 class Playlist {
-    private city;
+    private location: Location;
 
-    constructor(cityName: string) {
-        this.city = cityName;
+    constructor(location: Location) {
+        this.location = location;
     }
 
     public getTracks() {
@@ -13,7 +14,7 @@ class Playlist {
     }
 
     private async run() {
-        const openWeatherMap = new OpenWeatherMap(this.city);
+        const openWeatherMap = new OpenWeatherMap(this.location);
         const temperatureCelsius = await openWeatherMap.getTemperatureCelsius()
             .catch((err) => { console.log(err); });
 

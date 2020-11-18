@@ -1,20 +1,18 @@
 import axios from 'axios';
 import { openWeatherMap } from '../../config/environment';
+import { Location } from '../../types/types';
 
 class OpenWeatherMap {
-    private baseUrl = openWeatherMap.baseUrl;
+    private location: Location;
 
-    private token = openWeatherMap.token
-
-    private city;
-
-    constructor(cityName: string) {
-        this.city = cityName;
+    constructor(location: Location) {
+        this.location = location;
     }
 
     async getTemperatureCelsius() {
+        const query = this.location.city ? `q=${this.location.city}` : `lat=${this.location.lat}&lon=${this.location.lon}`;
         try {
-            const weatherDataRequest = await axios.get(`${this.baseUrl}?q=${this.city}&units=metric&appid=${this.token}`);
+            const weatherDataRequest = await axios.get(`${openWeatherMap.baseUrl}?${query}&units=metric&appid=${openWeatherMap.token}`);
             return parseFloat(`${weatherDataRequest.data.main.temp}`);
         } catch (error) {
             throw new Error(error);

@@ -2,7 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import bodyParse from 'body-parser';
 import logger from 'morgan';
-import routerPlaylist from './routes/playlist';
+import routerPlaylist from './routes/playlistRouter';
 
 const app = express();
 
