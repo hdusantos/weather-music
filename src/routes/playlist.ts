@@ -12,7 +12,7 @@ routerPlaylist.get('/', async (req, res) => {
     const city: string = `${req.query.city}`;
 
     const playlistCtrl = new PlaylistController(city);
-    const playlist = await playlistCtrl.getPlaylist();
+    const playlist = await playlistCtrl.getTracks();
 
     return res.json(playlist);
 });

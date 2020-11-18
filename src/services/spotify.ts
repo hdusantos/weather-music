@@ -34,7 +34,7 @@ class Spotify {
     }
 
     async getPlaylistTracks(playlistID: string) {
-        const urlPlaylistTracks = 'https://api.spotify.com/v1/playlists/37i9dQZF1DWXRqgorJj26U/tracks?market=ES&fields=items(track(name%2Chref%2Calbum(name%2Chref)))';
+        const urlPlaylistTracks = `https://api.spotify.com/v1/playlists/${playlistID}/tracks?market=ES&fields=items(track(name%2Chref%2Calbum(name%2Chref)))`;
 
         try {
             const tracks = await axios.get(urlPlaylistTracks, {
@@ -45,7 +45,6 @@ class Spotify {
             });
             return tracks;
         } catch (error) {
-            //    console.log(error);
             throw new Error(error);
         }
     }
