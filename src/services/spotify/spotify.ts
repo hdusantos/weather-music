@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { spotify } from '../../config/environment';
+import { CustomError } from '../../helpers/error.handler';
 
 class Spotify {
     private token: string;
@@ -29,7 +30,7 @@ class Spotify {
             this.token = response.data.access_token;
             return true;
         } catch (error) {
-            throw new Error(error.response.data.error_description);
+            throw new CustomError(500, 'error connecting with spotify');
         }
     }
 
@@ -45,7 +46,7 @@ class Spotify {
             });
             return tracks;
         } catch (error) {
-            throw new Error(error);
+            throw new CustomError(500, 'error fetching playlist');
         }
     }
 }

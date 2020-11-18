@@ -23,8 +23,7 @@ class Playlist {
         const playlistID = this.getPlaylistID(temperatureCelsius as number);
 
         const spotify = new Spotify();
-        await spotify.auth()
-            .catch((err) => { console.log(err); });
+        await spotify.auth();
 
         const listTracks = await spotify.getPlaylistTracks(playlistID);
 
