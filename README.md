@@ -5,6 +5,7 @@ API de sugestão de músicas de uma playlist do spotify _(baseado no clima de um
 ## Tabela de conteúdo:
 
   1. [Executando a aplicação](#executando-a-aplicação)
+      1. [Docker](#executando-a-aplicação-com-o-docker)
       1. [NodeJs / yarn](#executando-com-nodejs-e-yarn)
       1. [Personalizando as portas](#personalizando-as-portas)
   1. [Visão geral da API](#visão-geral-da-api)
@@ -17,6 +18,29 @@ API de sugestão de músicas de uma playlist do spotify _(baseado no clima de um
   1. [Autores](#autores)
 
 ## Executando a aplicação
+Há duas formas disponíveis de executar a aplicação, via docker ou usando o NodeJS com yarn:
+
+#### Executando a aplicação com o docker
+
+Clone o repositório
+
+```sh
+git clone https://github.com/hdusantos/weather-music
+```
+
+Construa a imagem
+
+```sh
+docker build -t weather-music .
+```
+
+Alguns parâmetro são experados pela aplicação, são eles o **token** do openWeatherMap API, **clientId e clientSecret** do Spotify API, basta passar os valores como variáveis de ambiente para o container.
+
+```sh
+docker run --name weather-music -p 3001:3001 -e "OPEN_WEATHER_MAP_API_TOKEN=TOKEN_AQUI" -e "SPOTIFY_API_CLIENT_ID=CLIENT_ID_AQUI" -e "SPOTIFY_API_CLIENT_SECRET=CLIENT_SECRET_AQUI" -d weather-music
+```
+
+Pronto! A aplicação está em execução, por padrão a aplicação está disponível na porta _3001_
 
 #### Executando com NodeJs e Yarn
 
