@@ -14,7 +14,7 @@ routerPlaylist.get('/', async (req, res) => {
     const playlistCtrl = new PlaylistController(city);
     const playlist = await playlistCtrl.getPlaylist();
 
-    res.send(`${playlist}`);
+    return res.json(playlist);
 });
 
 export default routerPlaylist;

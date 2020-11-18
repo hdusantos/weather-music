@@ -22,7 +22,9 @@ class PlaylistController {
         await spotify.auth()
             .catch((err) => { console.log(err); });
 
-        return temperatureCelsius;
+        const listTracks = await spotify.getPlaylistTracks('rock');
+
+        return listTracks.data;
     }
 }
 
