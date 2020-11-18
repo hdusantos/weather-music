@@ -2,6 +2,8 @@
 
 API de sugestão de músicas de uma playlist do spotify _(baseado no clima de uma cidade escolhida)_
 
+> Disponível em http://54.174.128.162:3001/playlist?city=campinas
+
 ## Tabela de conteúdo:
 
   1. [Executando a aplicação](#executando-a-aplicação)
