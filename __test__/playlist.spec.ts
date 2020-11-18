@@ -1,4 +1,4 @@
-import PlaylistController from '../src/controllers/playlistController';
+import PlaylistController from '../src/services/playlist/playlist';
 
 test('Tracks must return items', async () => {
     const city: string = 'campinas';

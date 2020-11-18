@@ -1,43 +1,18 @@
-import OpenWeatherMap from '../services/openWeatherMap/openWeatherMap';
-import Spotify from '../services/spotify/spotify';
+import { Request, Response } from 'express';
+import Playlist from '../services/playlist/playlist';
 
-class PlaylistController {
-    private city;
-
-    constructor(cityName: string) {
-        this.city = cityName;
+const playlistController = async (req: Request, res: Response) => {
+    // Validate params
+    if (req.query.city === undefined) {
+        return res.status(400).send('Parameter city not found');
     }
 
-    public getTracks() {
-        return this.run();
-    }
+    const city: string = `${req.query.city}`;
 
-    private async run() {
-        const openWeatherMap = new OpenWeatherMap(this.city);
-        const temperatureCelsius = await openWeatherMap.getTemperatureCelsius()
-            .catch((err) => { console.log(err); });
+    const playlistService = new Playlist(city);
+    const tracks = await playlistService.getTracks();
 
-        const playlistID = this.getPlaylistID(temperatureCelsius as number);
+    return res.json(tracks);
+};
 
-        const spotify = new Spotify();
-        await spotify.auth()
-            .catch((err) => { console.log(err); });
-
-        const listTracks = await spotify.getPlaylistTracks(playlistID);
-
-        return listTracks.data;
-    }
-
-    private getPlaylistID(temperature: number) {
-        // tracks for party
-        if (temperature > 30) { return '37i9dQZF1DXaXB8fQg7xif'; }
-        // pop music tracks
-        if (temperature >= 15 && temperature <= 30) { return '37i9dQZF1DX1ngEVM0lKrb'; }
-        // rock music tracks
-        if (temperature >= 10 && temperature <= 14) { return '37i9dQZF1DWXRqgorJj26U'; }
-        // classical music tracks
-        return '37i9dQZF1DWWEJlAGA9gs0';
-    }
-}
-
-export default PlaylistController;
+export default playlistController;
