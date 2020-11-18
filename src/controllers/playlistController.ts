@@ -11,7 +11,7 @@ const playlistController = async (req: Request, res: Response, next: NextFunctio
         }
 
         const params: Location = <Location>req.query;
-        console.log(params);
+
         const playlistService = new Playlist(params);
         const tracks = await playlistService.getTracks();
         res.json(tracks);

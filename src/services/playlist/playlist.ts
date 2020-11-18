@@ -16,7 +16,9 @@ class Playlist {
     private async run() {
         const openWeatherMap = new OpenWeatherMap(this.location);
         const temperatureCelsius = await openWeatherMap.getTemperatureCelsius()
-            .catch((err) => { console.log(err); });
+            .catch((err) => {
+                throw err;
+            });
 
         const playlistID = this.getPlaylistID(temperatureCelsius as number);
 

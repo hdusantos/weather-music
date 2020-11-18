@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { openWeatherMap } from '../../config/environment';
+import { CustomError } from '../../helpers/error.handler';
 import { Location } from '../../types/types';
 
 class OpenWeatherMap {
@@ -15,7 +16,8 @@ class OpenWeatherMap {
             const weatherDataRequest = await axios.get(`${openWeatherMap.baseUrl}?${query}&units=metric&appid=${openWeatherMap.token}`);
             return parseFloat(`${weatherDataRequest.data.main.temp}`);
         } catch (error) {
-            throw new Error(error);
+            const { cod, message } = error.response.data;
+            throw new CustomError(cod, message);
         }
     }
 }
